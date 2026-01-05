@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{d55e4247-89a3-4e46-a5e9-6730d2b08ad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{825649ab-dd9d-4c71-a26b-3f4d92963fa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{35f556c1-6746-433f-adec-3e8b95846f25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{170db0e0-58a3-49e2-a5c2-35559fc00189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{391a17c8-60d3-4557-8782-446859e5e834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Interfaces">
+      <UniqueIdentifier>{065895c8-fdd0-40da-980d-335fb5fbd927}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Modules.Template\Dmf_OsrFx2.md">
+      <Filter>Documentation</Filter>
+    </Text>
+    <Text Include="..\..\Modules.Template\Dmf_Template.md">
+      <Filter>Documentation</Filter>
+    </Text>
+    <Text Include="..\..\Modules.Template\Dmf_ToasterBus.md">
+      <Filter>Documentation</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Modules.Template\DmfModules.Template.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\DmfModules.Template.Public.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_ToasterBus_Public.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_ToasterBus.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_Template.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\DmfModules.Template.Trace.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_OsrFx2.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_OsrFx2_Public.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_Interface_SampleInterface.h">
+      <Filter>Headers\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_SampleInterfaceTransport1.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_SampleInterfaceTransport2.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_SampleInterfaceProtocol1.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_LegacyTransportA.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_LegacyTransportB.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_LegacyProtocol.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_NonPnp.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_NonPnp_Public.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_VirtualHidMiniSample.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_Interface_SampleInterfaceUpper.h">
+      <Filter>Headers\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_Interface_SampleInterfaceLower.h">
+      <Filter>Headers\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_SampleInterfaceUpperTransport1.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_SampleInterfaceLowerTransport1.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_SampleInterfaceLowerProtocol.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_SampleInterfaceUpperProtocol.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_SampleInterfaceUpperTransport2.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Modules.Template\Dmf_SampleInterfaceLowerTransport2.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Modules.Template\Dmf_Template.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_ToasterBus.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_OsrFx2.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_Interface_SampleInterface.c">
+      <Filter>Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_SampleInterfaceTransport1.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_SampleInterfaceTransport2.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_SampleInterfaceProtocol1.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_LegacyTransportA.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_LegacyTransportB.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_LegacyProtocol.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_NonPnp.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_VirtualHidMiniSample.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_Interface_SampleInterfaceUpper.c">
+      <Filter>Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_Interface_SampleInterfaceLower.c">
+      <Filter>Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_SampleInterfaceLowerTransport1.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_SampleInterfaceUpperTransport1.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_SampleInterfaceLowerProtocol.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_SampleInterfaceUpperProtocol.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_SampleInterfaceLowerTransport2.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Modules.Template\Dmf_SampleInterfaceUpperTransport2.c">
+      <Filter>Modules</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Modules.Template\Dmf_LegacyTransportA.md">
+      <Filter>Documentation</Filter>
+    </None>
+    <None Include="..\..\Modules.Template\Dmf_LegacyTransportB.md">
+      <Filter>Documentation</Filter>
+    </None>
+    <None Include="..\..\Modules.Template\Dmf_LegacyProtocol.md">
+      <Filter>Documentation</Filter>
+    </None>
+    <None Include="..\..\Modules.Template\Dmf_NonPnp.md">
+      <Filter>Documentation</Filter>
+    </None>
+    <None Include="..\..\Modules.Template\Dmf_VirtualHidMiniSample.md">
+      <Filter>Documentation</Filter>
+    </None>
+  </ItemGroup>
+</Project>

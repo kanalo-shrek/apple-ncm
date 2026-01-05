@@ -1,0 +1,1162 @@
+/*++
+
+    Copyright (c) Microsoft Corporation. All rights reserved.
+
+Module Name:
+
+    Dmf_Template.c
+
+Abstract:
+
+    Template that is used to create additional DMF Modules from scratch.
+
+    To use this template:
+
+    1. Save this file as a new file with the name of the new DMF Module to create. For example, Dmf_[NewModuleName].c.
+    2. Save the corresponding file, Dmf_Template.h, as Dmf_[NewModuleName].h.
+    3. Add #include "Dmf_[NewModuleName].h" to the DMF Library Include file name at the end of the list. For example,
+       DmfModules.Template.h or DmfModules.Library.h. Usually, you add this new Module to the Module Include file
+       of a new, private DMF Library.
+    4. Add Dmf_[NewModuleName].c and Dmf_[NewModuleName].h to the Visual Studio DMF Library project. Now, the entire
+       project should compile.
+    5. Open the two new files and replace "Template" with the new name, e.g., "[NewModuleName]".
+    6. Correct the Abstract (delete all of this, of course).
+    7. Search for "TEMPLATE:" and make appropriate modifications as indicated.
+    8. Delete all callbacks that the new Module does not need. (Most will probably not be needed.)
+
+    NOTE: Please see slide #81 in the DMF PowerPoint presentation for details about the above steps.
+
+    NOTE: This file contains all the function headers for the most commonly needed DMF Callbacks. You should use 
+          these as a basis for your own code to save time. They should be copied and then updated to add specific 
+          details about the purpose of the function.
+
+          EvtDevicePrepareHardware/EvtDeviceReleaseHardare/EvtDeviceIoControl/EvtDeviceIoInternalControl are not 
+          included here because they are rarely used.
+
+Environment:
+
+    Kernel-mode Driver Framework
+    User-mode Driver Framework
+
+--*/
+
+// DMF and this Module's Library specific definitions.
+// NOTE: If you are using a super set of the DMF Library, then use that Library's include file instead.
+//       That include file will also include the Library include files of all Libraries the superset
+//       depends on.
+//
+#include "DmfModule.h"
+#include "DmfModules.Template.h"
+#include "DmfModules.Template.Trace.h"
+
+#if defined(DMF_INCLUDE_TMH)
+#include "Dmf_Template.tmh"
+#endif
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Module Private Enumerations and Structures
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Module Private Context
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+typedef struct _DMF_CONTEXT_Template
+{
+    // TEMPLATE: Put data needed to support this DMF Module.
+    //
+    ULONG Template;
+} DMF_CONTEXT_Template;
+
+// This macro declares the following function:
+// DMF_CONTEXT_GET()
+//
+DMF_MODULE_DECLARE_CONTEXT(Template)
+
+// This macro declares the following function:
+// DMF_CONFIG_GET()
+//
+DMF_MODULE_DECLARE_CONFIG(Template)
+
+// Memory Pool Tag.
+//
+#define MemoryTag 'MpmT'
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// DMF Module Support Code
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+// TEMPLATE: Add PRIVATE functions used by this DMF Module. Make sure to tag them as "static" to
+//           enforce privacy.
+//
+
+// 'unreferenced local function has been removed'
+// TODO: Remove this is non-template code.
+//
+#pragma push()
+#pragma warning(disable:4505)
+
+#pragma code_seg("PAGE")
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Must_inspect_result_
+static
+NTSTATUS
+Template_ModuleSupportFunction(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    A sample Module support function. It is just provided as a sample to show the naming convention.
+    Support functions are:
+        1. Always "static".
+        2. Begin with the Module id, e.g., "Template".
+
+Arguments:
+
+    DmfModule - This Module's handle.
+
+Return Value:
+
+    NTSTATUS
+
+--*/
+{
+    NTSTATUS ntStatus;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+
+    PAGED_CODE();
+
+    FuncEntry(DMF_TRACE);
+
+    ntStatus = STATUS_SUCCESS;
+
+    FuncExit(DMF_TRACE, "ntStatus=%!STATUS!", ntStatus);
+
+    return ntStatus;
+}
+#pragma code_seg()
+
+// 'unreferenced local function has been removed'
+// TODO: Remove this is non-template code.
+//
+#pragma pop()
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// WDF Module Callbacks
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+_Function_class_(DMF_ModuleD0Entry)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Must_inspect_result_
+static
+NTSTATUS
+DMF_Template_ModuleD0Entry(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDF_POWER_DEVICE_STATE PreviousState
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleD0Entry for a given DMF Module.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    PreviousState - The WDF Power State that the given DMF Module should exit from.
+
+Return Value:
+
+    NTSTATUS
+
+--*/
+{
+    NTSTATUS ntStatus;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+    UNREFERENCED_PARAMETER(PreviousState);
+
+    FuncEntry(DMF_TRACE);
+
+    ntStatus = STATUS_SUCCESS;
+
+    FuncExit(DMF_TRACE, "ntStatus=%!STATUS!", ntStatus);
+
+    return ntStatus;
+}
+
+_Function_class_(DMF_ModuleD0EntryPostInterruptsEnabled)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Must_inspect_result_
+static
+NTSTATUS
+DMF_Template_ModuleD0EntryPostInterruptsEnabled(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDF_POWER_DEVICE_STATE PreviousState
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleD0EntryPostInterruptsEnabled for a given DMF Module.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    PreviousState - The WDF Power State that the given DMF Module should exit from.
+
+Return Value:
+
+   NTSTATUS of either the given DMF Module's Open Callback or STATUS_SUCCESS.
+
+--*/
+{
+    NTSTATUS ntStatus;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+    UNREFERENCED_PARAMETER(PreviousState);
+
+    FuncEntry(DMF_TRACE);
+
+    ntStatus = STATUS_SUCCESS;
+
+    FuncExit(DMF_TRACE, "ntStatus=%!STATUS!", ntStatus);
+
+    return ntStatus;
+}
+
+_Function_class_(DMF_ModuleD0ExitPreInterruptsDisabled)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+static
+NTSTATUS
+DMF_Template_ModuleD0ExitPreInterruptsDisabled(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDF_POWER_DEVICE_STATE TargetState
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleD0ExitPreInterruptsDisabled for a given DMF Module.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    TargetState - The WDF Power State that the given DMF Module will enter.
+
+Return Value:
+
+    None
+
+--*/
+{
+    NTSTATUS ntStatus;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+    UNREFERENCED_PARAMETER(TargetState);
+
+    FuncEntry(DMF_TRACE);
+
+    ntStatus = STATUS_SUCCESS;
+
+    FuncExitVoid(DMF_TRACE);
+
+    return ntStatus;
+}
+
+_Function_class_(DMF_ModuleD0Exit)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+static
+NTSTATUS
+DMF_Template_ModuleD0Exit(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDF_POWER_DEVICE_STATE TargetState
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleD0Exit for a given DMF Module.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    TargetState - The WDF Power State that the given DMF Module will enter.
+
+Return Value:
+
+    NTSTATUS
+
+--*/
+{
+    NTSTATUS ntStatus;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+    UNREFERENCED_PARAMETER(TargetState);
+
+    FuncEntry(DMF_TRACE);
+
+    ntStatus = STATUS_SUCCESS;
+
+    FuncExitVoid(DMF_TRACE);
+
+    return ntStatus;
+}
+
+_Function_class_(DMF_ModuleSelfManagedIoCleanup)
+_IRQL_requires_max_(DISPATCH_LEVEL)
+VOID
+DMF_Template_SelfManagedIoCleanup(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleSelfManagedIoCleanup for a given DMF Module.
+
+Arguments:
+
+    DmfModule - The given DMF Module.
+
+Return Value:
+
+    None
+
+--*/
+{
+    UNREFERENCED_PARAMETER(DmfModule);
+}
+
+_Function_class_(DMF_ModuleSelfManagedIoFlush)
+_IRQL_requires_max_(DISPATCH_LEVEL)
+VOID
+DMF_Template_SelfManagedIoFlush(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleSelfManagedIoFlush for a given DMF Module.
+
+Arguments:
+
+    DmfModule - The given DMF Module.
+
+Return Value:
+
+    None
+
+--*/
+{
+    UNREFERENCED_PARAMETER(DmfModule);
+}
+
+_Function_class_(DMF_ModuleSelfManagedIoInit)
+_IRQL_requires_max_(DISPATCH_LEVEL)
+NTSTATUS
+DMF_Template_SelfManagedIoInit(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleSelfManagedIoInit for a given DMF Module.
+
+Arguments:
+
+    DmfModule - The given DMF Module.
+
+Return Value:
+
+    NTSTATUS
+
+--*/
+{
+    UNREFERENCED_PARAMETER(DmfModule);
+
+    return STATUS_SUCCESS;
+}
+
+_Function_class_(DMF_ModuleSelfManagedIoSuspend)
+_IRQL_requires_max_(DISPATCH_LEVEL)
+NTSTATUS
+DMF_Template_SelfManagedIoSuspend(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleSelfManagedIoSuspend for a given DMF Module.
+
+Arguments:
+
+    DmfModule - The given DMF Module.
+
+Return Value:
+
+    NTSTATUS
+
+--*/
+{
+    UNREFERENCED_PARAMETER(DmfModule);
+
+    return STATUS_SUCCESS;
+}
+
+_Function_class_(DMF_ModuleSelfManagedIoRestart)
+_IRQL_requires_max_(DISPATCH_LEVEL)
+NTSTATUS
+DMF_Template_SelfManagedIoRestart(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleSelfManagedIoRestart for a given DMF Module.
+
+Arguments:
+
+    DmfModule - The given DMF Module.
+
+Return Value:
+
+    NTSTATUS
+
+--*/
+{
+    UNREFERENCED_PARAMETER(DmfModule);
+
+    return STATUS_SUCCESS;
+}
+
+_Function_class_(DMF_ModuleSurpriseRemoval)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+VOID
+DMF_Template_SurpriseRemoval(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleSurpriseRemoval for a given DMF Module.
+
+Arguments:
+
+    DmfModule - The given DMF Module.
+
+Return Value:
+
+    None
+
+--*/
+{
+    FuncEntry(DMF_TRACE);
+
+    UNREFERENCED_PARAMETER(DmfModule);
+
+    FuncExitVoid(DMF_TRACE);
+}
+
+_Function_class_(DMF_ModuleFileCreate)
+#pragma code_seg("PAGE")
+_IRQL_requires_max_(PASSIVE_LEVEL)
+static
+BOOLEAN
+DMF_Template_ModuleFileCreate(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDFDEVICE Device,
+    _In_ WDFREQUEST Request,
+    _In_ WDFFILEOBJECT FileObject
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleFileCreate for a given DMF Module.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    Device - WDF device object.
+    Request - WDF Request with IOCTL parameters.
+    FileObject - WDF file object that describes a file that is being opened for the specified request
+
+Return Value:
+
+    Return FALSE to indicated that this Module does not support File Create.
+
+--*/
+{
+    BOOLEAN returnValue;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+    UNREFERENCED_PARAMETER(Device);
+    UNREFERENCED_PARAMETER(Request);
+    UNREFERENCED_PARAMETER(FileObject);
+
+    PAGED_CODE();
+
+    FuncEntry(DMF_TRACE);
+
+    returnValue = FALSE;
+
+    FuncExit(DMF_TRACE, "returnValue=%d", returnValue);
+
+    return returnValue;
+}
+#pragma code_seg()
+
+#pragma code_seg("PAGE")
+_Function_class_(DMF_ModuleFileCleanup)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+static
+BOOLEAN
+DMF_Template_ModuleFileCleanup(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDFFILEOBJECT FileObject
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleFileCleanup for a given DMF Module.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    FileObject - WDF file object
+
+Return Value:
+
+    None
+
+--*/
+{
+    BOOLEAN returnValue;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+    UNREFERENCED_PARAMETER(FileObject);
+
+    PAGED_CODE();
+
+    FuncEntry(DMF_TRACE);
+
+    returnValue = FALSE;
+
+    FuncExit(DMF_TRACE, "returnValue=%d", returnValue);
+
+    return returnValue;
+}
+#pragma code_seg()
+
+#pragma code_seg("PAGE")
+_Function_class_(DMF_ModuleFileClose)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+static
+BOOLEAN
+DMF_Template_ModuleFileClose(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDFFILEOBJECT FileObject
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleFileClose for a given DMF Module.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    FileObject - WDF file object
+
+Return Value:
+
+    None
+
+--*/
+{
+    BOOLEAN returnValue;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+    UNREFERENCED_PARAMETER(FileObject);
+
+    PAGED_CODE();
+
+    FuncEntry(DMF_TRACE);
+
+    returnValue = FALSE;
+
+    FuncExit(DMF_TRACE, "returnValue=%d", returnValue);
+
+    return returnValue;
+}
+#pragma code_seg()
+
+_Function_class_(DMF_ModuleDeviceIoControl)
+_IRQL_requires_same_
+_IRQL_requires_max_(DISPATCH_LEVEL)
+BOOLEAN
+DMF_Template_ModuleDeviceIoControl(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDFQUEUE Queue,
+    _In_ WDFREQUEST Request,
+    _In_ size_t OutputBufferLength,
+    _In_ size_t InputBufferLength,
+    _In_ ULONG IoControlCode
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleDeviceIoControl for a given DMF Module.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    Queue - WDF file object to where the Request is sent.
+    Request - The Request that contains the IOCTL parameters.
+    OutputBufferLength - Output buffer length in the Request.
+    InputBufferLength - Input buffer length in the Request.
+    IoControlCode - IOCTL of the Request.
+
+Return Value:
+
+    If this Module handles the IOCTL (it recognizes it), returns TRUE.
+    If this Module does not recognize the IOCTL, returns FALSE.
+
+--*/
+{
+    BOOLEAN handled;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+    UNREFERENCED_PARAMETER(Queue);
+    UNREFERENCED_PARAMETER(Request);
+    UNREFERENCED_PARAMETER(OutputBufferLength);
+    UNREFERENCED_PARAMETER(InputBufferLength);
+    UNREFERENCED_PARAMETER(IoControlCode);
+
+    FuncEntry(DMF_TRACE);
+
+    handled = FALSE;
+
+    FuncExit(DMF_TRACE, "returnValue=%d", handled);
+
+    return handled;
+}
+
+_Function_class_(DMF_ModuleInternalDeviceIoControl)
+_IRQL_requires_same_
+_IRQL_requires_max_(DISPATCH_LEVEL)
+BOOLEAN
+DMF_Template_ModuleInternalDeviceIoControl(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDFQUEUE Queue,
+    _In_ WDFREQUEST Request,
+    _In_ size_t OutputBufferLength,
+    _In_ size_t InputBufferLength,
+    _In_ ULONG IoControlCode
+    )
+/*++
+
+Routine Description:
+
+    Template callback for ModuleInternalDeviceIoControl for a given DMF Module.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    Queue - WDF file object to where the Request is sent.
+    Request - The Request that contains the IOCTL parameters.
+    OutputBufferLength - Output buffer length in the Request.
+    InputBufferLength - Input buffer length in the Request.
+    IoControlCode - IOCTL of the Request.
+
+Return Value:
+
+    If this Module handles the IOCTL (it recognizes it), returns TRUE.
+    If this Module does not recognize the IOCTL, returns FALSE.
+
+--*/
+{
+    BOOLEAN handled;
+
+    UNREFERENCED_PARAMETER(DmfModule);
+    UNREFERENCED_PARAMETER(Queue);
+    UNREFERENCED_PARAMETER(Request);
+    UNREFERENCED_PARAMETER(OutputBufferLength);
+    UNREFERENCED_PARAMETER(InputBufferLength);
+    UNREFERENCED_PARAMETER(IoControlCode);
+
+    FuncEntry(DMF_TRACE);
+
+    handled = FALSE;
+
+    FuncExit(DMF_TRACE, "returnValue=%d", handled);
+
+    return handled;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// DMF Module Callbacks
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+#pragma code_seg("PAGE")
+_Function_class_(DMF_ChildModulesAdd)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+VOID
+DMF_Template_ChildModulesAdd(
+    _In_ DMFMODULE DmfModule,
+    _In_ DMF_MODULE_ATTRIBUTES* DmfParentModuleAttributes,
+    _In_ PDMFMODULE_INIT DmfModuleInit
+    )
+/*++
+
+Routine Description:
+
+    Configure and add the required Child Modules to the given Parent Module.
+
+Arguments:
+
+    DmfModule - The given Parent Module.
+    DmfParentModuleAttributes - Pointer to the parent DMF_MODULE_ATTRIBUTES structure.
+    DmfModuleInit - Opaque structure to be passed to DMF_DmfModuleAdd.
+
+Return Value:
+
+    None
+
+--*/
+{
+    DMF_CONFIG_Template* moduleConfig;
+    DMF_CONTEXT_Template* moduleContext;
+
+    PAGED_CODE();
+
+    UNREFERENCED_PARAMETER(DmfParentModuleAttributes);
+    UNREFERENCED_PARAMETER(DmfModuleInit);
+
+    FuncEntry(DMF_TRACE);
+
+    moduleConfig = DMF_CONFIG_GET(DmfModule);
+    moduleContext = DMF_CONTEXT_GET(DmfModule);
+
+    // TODO: Add Child Module here as needed. See other Module for examples.
+    //
+
+    FuncExitVoid(DMF_TRACE);
+}
+#pragma code_seg()
+
+#pragma code_seg("PAGE")
+_Function_class_(DMF_ResourcesAssign)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+static
+NTSTATUS
+DMF_Template_ResourcesAssign(
+    _In_ DMFMODULE DmfModule,
+    _In_ WDFCMRESLIST ResourcesRaw,
+    _In_ WDFCMRESLIST ResourcesTranslated
+    )
+/*++
+
+Routine Description:
+
+    Tells this Module instance what Resources are available. This Module then extracts
+    the needed Resources and uses them as needed.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+    ResourcesRaw - WDF Resource Raw parameter that is passed to the given
+                   DMF Module callback.
+    ResourcesTranslated - WDF Resources Translated parameter that is passed to the given
+                          DMF Module callback.
+
+Return Value:
+
+    STATUS_SUCCESS.
+
+--*/
+{
+    DMF_CONTEXT_Template* moduleContext;
+    ULONG resourceCount;
+    ULONG resourceIndex;
+    NTSTATUS ntStatus;
+    DMF_CONFIG_Template* moduleConfig;
+
+    PAGED_CODE();
+
+    UNREFERENCED_PARAMETER(ResourcesRaw);
+
+    FuncEntry(DMF_TRACE);
+
+    DmfAssert(ResourcesRaw != NULL);
+    DmfAssert(ResourcesTranslated != NULL);
+
+    moduleContext = DMF_CONTEXT_GET(DmfModule);
+
+    moduleConfig = DMF_CONFIG_GET(DmfModule);
+
+    // Check the number of resources for the button device.
+    //
+    resourceCount = WdfCmResourceListGetCount(ResourcesTranslated);
+
+    // Parse the resources. This Module cares about GPIO and Interrupt resources.
+    //
+    for (resourceIndex = 0; resourceIndex < resourceCount; resourceIndex++)
+    {
+        PCM_PARTIAL_RESOURCE_DESCRIPTOR resource;
+
+        resource = WdfCmResourceListGetDescriptor(ResourcesTranslated,
+                                                  resourceIndex);
+        if (NULL == resource)
+        {
+            ntStatus = STATUS_INSUFFICIENT_RESOURCES;
+            TraceEvents(TRACE_LEVEL_ERROR, DMF_TRACE, "No resources assigned");
+            goto Exit;
+        }
+
+        // TODO: Write code to find needed resources.
+        //
+    }
+
+    // TODO: Validate and initialize resources.
+    //
+
+    ntStatus = STATUS_SUCCESS;
+
+Exit:
+
+    FuncExit(DMF_TRACE, "ntStatus=%!STATUS!", ntStatus);
+
+    return ntStatus;
+}
+#pragma code_seg()
+
+#pragma code_seg("PAGE")
+_Function_class_(DMF_NotificationRegister)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Must_inspect_result_
+static
+NTSTATUS
+DMF_Template_NotificationRegister(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    This callback is called when the Module Open Flags indicate that the this Module
+    is opened after an asynchronous notification has happened.
+    (DMF_MODULE_OPEN_OPTION_NOTIFY_PrepareHardware or DMF_MODULE_OPEN_OPTION_NOTIFY_D0Entry)
+    This callback registers the notification.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+
+Return Value:
+
+    STATUS_SUCCESS
+
+--*/
+{
+    NTSTATUS ntStatus;
+
+    PAGED_CODE();
+
+    UNREFERENCED_PARAMETER(DmfModule);
+
+    FuncEntry(DMF_TRACE);
+
+    ntStatus = STATUS_SUCCESS;
+
+    FuncExit(DMF_TRACE, "ntStatus=%!STATUS!", ntStatus);
+
+    return STATUS_SUCCESS;
+}
+#pragma code_seg()
+
+#pragma code_seg("PAGE")
+_Function_class_(DMF_NotificationUnregister)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+static
+VOID
+DMF_Template_NotificationUnregister(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    This callback is called when the Module Open Flags indicate that the this Module
+    is opened after an asynchronous notification has happened.
+    (DMF_MODULE_OPEN_OPTION_NOTIFY_PrepareHardware or DMF_MODULE_OPEN_OPTION_NOTIFY_D0Entry)
+    This callback unregisters the notification that was previously registered.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+
+Return Value:
+
+    None
+
+--*/
+{
+    PAGED_CODE();
+
+    UNREFERENCED_PARAMETER(DmfModule);
+
+    FuncEntry(DMF_TRACE);
+
+    FuncExitVoid(DMF_TRACE);
+}
+#pragma code_seg()
+
+#pragma code_seg("PAGE")
+_Function_class_(DMF_Open)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Must_inspect_result_
+static
+NTSTATUS
+DMF_Template_Open(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    Initialize an instance of a DMF Module of type Template.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+
+Return Value:
+
+    STATUS_SUCCESS
+
+--*/
+{
+    NTSTATUS ntStatus;
+
+    PAGED_CODE();
+
+    UNREFERENCED_PARAMETER(DmfModule);
+
+    FuncEntry(DMF_TRACE);
+
+    ntStatus = STATUS_SUCCESS;
+
+    FuncExit(DMF_TRACE, "ntStatus=%!STATUS!", ntStatus);
+
+    return ntStatus;
+}
+#pragma code_seg()
+
+#pragma code_seg("PAGE")
+_Function_class_(DMF_Close)
+_IRQL_requires_max_(PASSIVE_LEVEL)
+static
+VOID
+DMF_Template_Close(
+    _In_ DMFMODULE DmfModule
+    )
+/*++
+
+Routine Description:
+
+    Uninitialize an instance of a DMF Module of type Template.
+
+Arguments:
+
+    DmfModule - This Module's handle.
+
+Return Value:
+
+    None
+
+--*/
+{
+    PAGED_CODE();
+
+    UNREFERENCED_PARAMETER(DmfModule);
+
+    FuncEntry(DMF_TRACE);
+
+    FuncExitVoid(DMF_TRACE);
+}
+#pragma code_seg()
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Public Calls by Client
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+
+#pragma code_seg("PAGE")
+_IRQL_requires_max_(PASSIVE_LEVEL)
+_Must_inspect_result_
+NTSTATUS
+DMF_Template_Create(
+    _In_ WDFDEVICE Device,
+    _In_ DMF_MODULE_ATTRIBUTES* DmfModuleAttributes,
+    _In_ WDF_OBJECT_ATTRIBUTES* ObjectAttributes,
+    _Out_ DMFMODULE* DmfModule
+    )
+/*++
+
+Routine Description:
+
+    Create an instance of a DMF Module of type Template.
+
+Arguments:
+
+    Device - Client driver's WDFDEVICE object.
+    DmfModuleAttributes - Opaque structure that contains parameters DMF needs to initialize the Module.
+    ObjectAttributes - WDF object attributes for DMFMODULE.
+    DmfModule - Address of the location where the created DMFMODULE handle is returned.
+
+Return Value:
+
+    NTSTATUS
+
+--*/
+{
+    NTSTATUS ntStatus;
+// TEMPLATE: Update this table to override default DMF Module Handlers.
+//           Make sure to update the size of the PRIVATE_CONTEXT and OPEN_CONTEXT.
+// TEMPLATE: Replace "_Template_" with "_GENERIC_" for all callbacks that are not implemented
+//           in this Module.
+//
+    DMF_MODULE_DESCRIPTOR dmfModuleDescriptor_Template;
+    DMF_CALLBACKS_DMF dmfCallbacksDmf_Template;
+    DMF_CALLBACKS_WDF dmfCallbacksWdf_Template;
+    DMF_ModuleTransportMethod DMF_Template_TransportMethod;
+
+    PAGED_CODE();
+
+    FuncEntry(DMF_TRACE);
+
+    DMF_CALLBACKS_DMF_INIT(&dmfCallbacksDmf_Template);
+    dmfCallbacksDmf_Template.ChildModulesAdd = DMF_Template_ChildModulesAdd;
+    dmfCallbacksDmf_Template.DeviceResourcesAssign = DMF_Template_ResourcesAssign;
+    dmfCallbacksDmf_Template.DeviceOpen = DMF_Template_Open;
+    dmfCallbacksDmf_Template.DeviceClose = DMF_Template_Close;
+    dmfCallbacksDmf_Template.DeviceNotificationRegister = DMF_Template_NotificationRegister;
+    dmfCallbacksDmf_Template.DeviceNotificationUnregister = DMF_Template_NotificationUnregister;
+
+    DMF_CALLBACKS_WDF_INIT(&dmfCallbacksWdf_Template);
+    dmfCallbacksWdf_Template.ModuleSelfManagedIoInit = DMF_Template_SelfManagedIoInit;
+    dmfCallbacksWdf_Template.ModuleSelfManagedIoSuspend = DMF_Template_SelfManagedIoSuspend;
+    dmfCallbacksWdf_Template.ModuleSelfManagedIoRestart = DMF_Template_SelfManagedIoRestart;
+    dmfCallbacksWdf_Template.ModuleSelfManagedIoFlush = DMF_Template_SelfManagedIoFlush;
+    dmfCallbacksWdf_Template.ModuleSelfManagedIoCleanup = DMF_Template_SelfManagedIoCleanup;
+    dmfCallbacksWdf_Template.ModuleSurpriseRemoval = DMF_Template_SurpriseRemoval;
+    dmfCallbacksWdf_Template.ModuleD0Entry = DMF_Template_ModuleD0Entry;
+    dmfCallbacksWdf_Template.ModuleD0EntryPostInterruptsEnabled = DMF_Template_ModuleD0EntryPostInterruptsEnabled;
+    dmfCallbacksWdf_Template.ModuleD0ExitPreInterruptsDisabled = DMF_Template_ModuleD0ExitPreInterruptsDisabled;
+    dmfCallbacksWdf_Template.ModuleD0Exit = DMF_Template_ModuleD0Exit;
+    dmfCallbacksWdf_Template.ModuleFileCreate = DMF_Template_ModuleFileCreate;
+    dmfCallbacksWdf_Template.ModuleFileCleanup = DMF_Template_ModuleFileCleanup;
+    dmfCallbacksWdf_Template.ModuleFileClose = DMF_Template_ModuleFileClose;
+    dmfCallbacksWdf_Template.ModuleDeviceIoControl = DMF_Template_ModuleDeviceIoControl;
+    dmfCallbacksWdf_Template.ModuleInternalDeviceIoControl = DMF_Template_ModuleInternalDeviceIoControl;
+
+    DMF_MODULE_DESCRIPTOR_INIT_CONTEXT_TYPE(dmfModuleDescriptor_Template,
+                                            Template,
+                                            DMF_CONTEXT_Template,
+                                            DMF_MODULE_OPTIONS_PASSIVE,
+                                            DMF_MODULE_OPEN_OPTION_OPEN_PrepareHardware);
+
+    dmfModuleDescriptor_Template.CallbacksDmf = &dmfCallbacksDmf_Template;
+    dmfModuleDescriptor_Template.CallbacksWdf = &dmfCallbacksWdf_Template;
+    // NOTE: This is only used for Transport Modules.
+    //
+    dmfModuleDescriptor_Template.ModuleTransportMethod = DMF_Template_TransportMethod;
+
+    ntStatus = DMF_ModuleCreate(Device,
+                                DmfModuleAttributes,
+                                ObjectAttributes,
+                                &dmfModuleDescriptor_Template,
+                                DmfModule);
+    if (! NT_SUCCESS(ntStatus))
+    {
+        TraceEvents(TRACE_LEVEL_ERROR, DMF_TRACE, "DMF_ModuleCreate fails: ntStatus=%!STATUS!", ntStatus);
+    }
+
+    FuncExit(DMF_TRACE, "ntStatus=%!STATUS!", ntStatus);
+
+    return(ntStatus);
+}
+#pragma code_seg()
+
+// Module Methods
+//
+
+// TEMPLATE: Add publicly accessible functions that allow Clients to access custom functionality of this Module.
+//
+
+// TEMPLATE: Sample Transport Method. Implement only when the Module is a Transport Module.
+//
+
+// NOTE: It is still possible to define Module Methods. Those can be called by the Transport Method.
+//       Thus, it is possible to use any Module as a Transport Module as long as it has a Transport Method.
+//
+NTSTATUS
+DMF_Template_TransportMethod(
+    _In_ DMFMODULE DmfModule,
+    _In_ ULONG Message,
+    _In_reads_(InputBufferSize) VOID* InputBuffer,
+    _In_ size_t InputBufferSize,
+    _Out_writes_(OutputBufferSize) VOID* OutputBuffer,
+    _In_ size_t OutputBufferSize
+    )
+{
+    NTSTATUS ntStatus;
+
+    UNREFERENCED_PARAMETER(InputBuffer);
+    UNREFERENCED_PARAMETER(InputBufferSize);
+    UNREFERENCED_PARAMETER(OutputBuffer);
+    UNREFERENCED_PARAMETER(OutputBufferSize);
+
+    DMF_ObjectValidate(DmfModule);
+
+    ntStatus = STATUS_SUCCESS;
+
+    switch (Message)
+    {
+    case Template_TransportMessage_Foo:
+    {
+        break;
+    }
+    case Template_TransportMessage_Bar:
+    {
+        break;
+    }
+    default:
+    {
+        ntStatus = STATUS_INVALID_PARAMETER;
+        break;
+    }
+    }
+
+    return ntStatus;
+}
+
+// eof: Dmf_Template.c
+//
