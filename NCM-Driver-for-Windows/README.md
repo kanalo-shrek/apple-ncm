@@ -1,8 +1,20 @@
 # The NCM Driver for Windows
 
-These sample codes are the basis of the actual implementation of the NCM drivers officially shipped with Windows 11. They provide examples of how to write a [WDF NetAdapterCx NIC driver](https://github.com/Microsoft/Network-Adapter-Class-Extension) for USB based NICs. 
+These sample codes are the basis of the actual implementation of the NCM drivers officially shipped with Windows 11. They provide examples of how to write a [WDF NetAdapterCx NIC driver](https://github.com/Microsoft/Network-Adapter-Class-Extension) for USB based NICs.
 
-Furthermore, they are good references for understanding the behaviors and the features provided by the Windows NCM host driver, and how it interoperates with other NCM compatible function devices.   
+Furthermore, they are good references for understanding the behaviors and the features provided by the Windows NCM host driver, and how it interoperates with other NCM compatible function devices.
+
+This driver is based on the original [Microsoft Network-Adapter-Class-Extension sample](https://github.com/Microsoft/Network-Adapter-Class-Extension).
+
+## [scripts](scripts)
+
+This folder contains PowerShell scripts to assist with driver development and deployment:
+
+* **_create-and-sign.ps1_** - Creates and digitally signs the driver packages
+* **_install-driver.ps1_** - Installs the built driver on the system for testing
+* **_rebuild-driver.ps1_** - Rebuilds the driver from source
+
+These scripts automate common development tasks and help streamline the build, sign, and install workflow.
 
 # Code Tour
 
