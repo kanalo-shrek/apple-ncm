@@ -2089,7 +2089,14 @@ static const struct usb_device_id cdc_devs[] = {
 	  .driver_info = (unsigned long)&cdc_ncm_zlp_info,
 	},
 
-	/* Apple Mac USB NCM - no interrupt endpoint quirk */
+	/* Apple Mac USB NCM - no interrupt endpoint quirk.
+	 * 0x1903: MacBook Air M1 (macOS 26); 0x1905: Mac Studio/desktop family.
+	 */
+	{ USB_DEVICE_AND_INTERFACE_INFO(0x05ac, 0x1903,
+		USB_CLASS_COMM,
+		USB_CDC_SUBCLASS_NCM, USB_CDC_PROTO_NONE),
+	  .driver_info = (unsigned long)&apple_ncm_info,
+	},
 	{ USB_DEVICE_AND_INTERFACE_INFO(0x05ac, 0x1905,
 		USB_CLASS_COMM,
 		USB_CDC_SUBCLASS_NCM, USB_CDC_PROTO_NONE),
